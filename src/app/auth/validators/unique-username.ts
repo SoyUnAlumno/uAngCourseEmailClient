@@ -22,7 +22,6 @@ export class UniqueUsername implements AsyncValidator {
           return null;
         }),
         catchError((err) => {
-          console.log(err);
           if (err.error.username) {
             // Uses shortcut 'of({})' to create new Observable
             return of({ nonUniqueUsername: true });

@@ -8,6 +8,8 @@ import { UniqueUsername } from '../validators/unique-username';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  username: FormControl = new FormControl('');
+  
 authForm = new FormGroup({
   username : new FormControl('', [
     Validators.required,
@@ -36,8 +38,7 @@ authForm = new FormGroup({
     private uniqueUsername: UniqueUsername) { }
 
   ngOnInit(): void {
-    console.log("check");
-    console.log(this.authForm);
+
   }
 
 }
