@@ -27,6 +27,8 @@ authForm = new FormGroup({
   constructor() { }
 
   ngOnInit(): void {
+    console.log("check");
+    console.log(this.authForm);
   }
 
 }

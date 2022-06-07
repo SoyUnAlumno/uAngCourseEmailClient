@@ -5,6 +5,7 @@
     <input formControlName="username" />
   </div>
   {{ authForm.get('username')?.errors | json}}
+  {{ authForm.errors | json}}
   <div class="field">
     <label>Password</label>
     <input formControlName="password" />
