@@ -1,15 +1,21 @@
 <h3>Create account</h3>
 <form class="ui form" [formGroup]="authForm">
-    <div class="field">
-        <label>Username</label>
-    <input formControlName="username"/>
+  <div class="field">
+    <label>Username</label>
+    <input formControlName="username" />
+  </div>
+  {{ authForm.get('username')?.errors | json}}
+  <div class="field">
     <label>Password</label>
-    <input formControlName="password"/>
-    <label>Password confirmation</label>
-    <input formControlName="passwordConfirmation"/>
-</div>
+    <input formControlName="password" />
+  </div>
+  {{ authForm.get('password')?.errors | json}}
 
-<button class="ui submit button primary">
-    Submit
-</button>
+  <div class="field">
+    <label>Password confirmation</label>
+    <input formControlName="passwordConfirmation" />
+  </div>
+  {{ authForm.get('passwordConfirmation')?.errors | json}}
+
+  <button class="ui submit button primary">Submit</button>
 </form>
