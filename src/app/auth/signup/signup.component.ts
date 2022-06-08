@@ -41,18 +41,30 @@ export class SignupComponent implements OnInit {
   constructor(
     private matchPassword: MatchPassword,
     private uniqueUsername: UniqueUsername,
-    private authService:  AuthService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {}
   onSubmit() {
     // Returns if Form is invalid
-    if(this.authForm.invalid){
+    if (this.authForm.invalid) {
       return;
     }
-    this.authService.signup(this.authForm.value).
-    subscribe(((response) => {
-      console.log(response);
-    }));
+    this.authService.signup(this.authForm.value).subscribe({ // Subscriber object
+      // Handle success
+      // Uses arrow function to bind context to Signup component. Otherwise context is the subscriber object
+      next: () => {
+        
+      },
+      // Handle error
+      error:(err)=> {
+        if(!err.status) {
+          this.authForm.setErrors({
+            noConnection:true
+          })
+        }  
+        console.log(err)
+      },
+    });
   }
 }
