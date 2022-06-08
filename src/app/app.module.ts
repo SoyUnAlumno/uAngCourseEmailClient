@@ -7,9 +7,17 @@ import { AuthModule } from './auth/auth.module';
 
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from './auth/auth-http-interceptor';
+import { EmailCreateComponent } from './inobx/email-create/email-create.component';
+import { EmailReplyComponent } from './inobx/email-reply/email-reply.component';
+import { EmailIndexComponent } from './inobx/email-index/email-index.component';
+import { EmailShowComponent } from './inobx/email-show/email-show.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmailCreateComponent,
+    EmailReplyComponent,
+    EmailIndexComponent,
+    EmailShowComponent
   ],
   imports: [
     BrowserModule,
