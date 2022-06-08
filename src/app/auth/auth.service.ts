@@ -33,9 +33,7 @@ export class AuthService {
 
   signup(credentials: SignupCredentials) {
     return this.http
-      .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials, {
-        withCredentials: true
-      })
+      .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials)
       .pipe(
         // Reminder: if we have an error coming out of the request, it's going to skip the tap operator
         // which is what we want.
@@ -46,7 +44,7 @@ export class AuthService {
   }
 
   checkAuth() {
-    return this.http.get(this.rootUrl + '/auth/signedin', { withCredentials:true}).pipe(
+    return this.http.get(this.rootUrl + '/auth/signedin').pipe(
       tap((response) => {
         console.log(response);
       })
