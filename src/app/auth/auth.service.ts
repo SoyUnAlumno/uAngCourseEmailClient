@@ -21,7 +21,7 @@ interface SignupResponse {
 })
 export class AuthService {
   rootUrl = 'https://api.angular-email.com'
-  signein$ = new BehaviorSubject(false);
+  signedin$ = new BehaviorSubject(false);
 
 
   constructor(private http: HttpClient) {}
@@ -42,7 +42,7 @@ export class AuthService {
       // Reminder: if we have an error coming out of the request, it's going to skip the tap operator
       // which is what we want.
       tap(()=> {
-        this.signein$.next(true);
+        this.signedin$.next(true);
       })
     )
   }
