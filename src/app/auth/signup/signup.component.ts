@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatchPassword } from '../validators/match-password';
 import { UniqueUsername } from '../validators/unique-username';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -41,7 +42,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private matchPassword: MatchPassword,
     private uniqueUsername: UniqueUsername,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -54,7 +56,7 @@ export class SignupComponent implements OnInit {
       // Handle success
       // Uses arrow function to bind context to Signup component. Otherwise context is the subscriber object
       next: () => {
-        
+        this.router.navigateByUrl('/inbox');
       },
       // Handle error
       error:(err)=> {
