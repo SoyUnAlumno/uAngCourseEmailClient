@@ -17,7 +17,7 @@ rootUrl: string = 'https://api.angular-email.com';
   constructor(private http: HttpClient) { }
 
 getEmails() {
-  this.http.get<EmailSummary[]>(`${this.rootUrl}/emails`,
+ return this.http.get<EmailSummary[]>(`${this.rootUrl}/emails`
   // No need for credentials because we previousl set that up with the interceptor
   )
 }
