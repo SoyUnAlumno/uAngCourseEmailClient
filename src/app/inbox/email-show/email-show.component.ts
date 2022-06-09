@@ -10,11 +10,21 @@ import { Email } from 'src/app/interfaces/Email';
 })
 export class EmailShowComponent implements OnInit {
   email!: Email;
-  constructor(private route: ActivatedRoute,
-    private emailService: EmailService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private emailService: EmailService
+  ) {
+    // Besides resolver, we can also use this.email = route.snapshot.data.email
+    // to be sure that when component is created
+    // we have a defined email property
+    this.route.data.subscribe(({ email }) => {
+      this.email = email;
+    });
+  }
 
   ngOnInit(): void {
-   this.route.params.pipe(
+    // Commented because now it's handled by Resolver
+    /* this.route.params.pipe(
      // Uses switchMap to cancel previous requests
      // avoiding showing previous requests that arrive late
      // when the newest request should be shown (previously happened
@@ -24,6 +34,6 @@ export class EmailShowComponent implements OnInit {
      })
    ).subscribe((email) =>{
      this.email = email;
-   })
+   }) */
   }
 }
