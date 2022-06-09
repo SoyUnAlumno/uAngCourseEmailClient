@@ -21,6 +21,11 @@ export class EmailCreateComponent implements OnInit {
       from: `${authService.username}@angular-email.com`,
     };
   }
-
+  
   ngOnInit(): void {}
+
+  onSubmit(email: Email){
+    
+
+  }
 }
