@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailService, EmailSummary } from '../email.service';
+import { EmailService } from '../email.service';
+import { EmailSummary } from 'src/app/interfaces/EmailSummary';
 @Component({
   selector: 'app-email-index',
   templateUrl: './email-index.component.html',

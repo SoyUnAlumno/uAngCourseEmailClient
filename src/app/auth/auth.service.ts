@@ -1,30 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
-
-export interface UsernameAvailableRespone {
-  available: boolean;
-}
-interface SignupCredentials {
-  username: string;
-  password: string;
-  passwordConfirmation: string;
-}
-
-interface SignupResponse {
-  username: string;
-}
-
-interface SignedinResponse {
-  authenticated: boolean;
-  username: string;
-}
-
-interface SigninCredentials {
-  username: boolean;
-  password: string;
-}
-
+import { UsernameAvailableRespone } from '../interfaces/UsernameAvailableResponse';
+import { SignupCredentials } from '../interfaces/SignupCredentials';
+import { SignupResponse } from '../interfaces/SignupResponse';
+import { SignedinResponse } from '../interfaces/SignedinResponse';
+import { SigninCredentials } from '../interfaces/SigninCredentials';
 @Injectable({
   providedIn: 'root',
 })
