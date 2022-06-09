@@ -3,24 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { Email } from '../interfaces/Email';
 import { EmailSummary } from '../interfaces/EmailSummary';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmailService {
-rootUrl: string = 'https://api.angular-email.com';
+  rootUrl: string = 'https://api.angular-email.com';
 
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  getEmails() {
+    return this.http.get<EmailSummary[]>(
+      `${this.rootUrl}/emails`
+      // No need for credentials because we previousl set that up with the interceptor
+    );
+  }
 
-getEmails() {
- return this.http.get<EmailSummary[]>(`${this.rootUrl}/emails`
-  // No need for credentials because we previousl set that up with the interceptor
-  )
-}
+  getEmail(id: string) {
+    return this.http.get<Email>(`${this.rootUrl}/emails/${id}`);
+  }
 
-getEmail(id: string) {
-return this.http.get<Email>(`${this.rootUrl}/emails/${id}`);
-}
-
+  sendEmail(email: Email) {
+    return this.http.post(`${this.rootUrl}/emails`, email);
+  }
 }
